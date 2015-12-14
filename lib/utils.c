@@ -32,13 +32,14 @@ struct nl_dump_params nl_debug_dp = {
 static void __init nl_debug_init(void)
 {
 	char *nldbg, *end;
-	
+	fprintf(stderr, "nl_debug_init");
 	if ((nldbg = getenv("NLDBG"))) {
+		fprintf(stderr, "nl_debug_init, NLDBG=%s\r\n", nldbg);
 		long level = strtol(nldbg, &end, 0);
 		if (nldbg != end)
 			nl_debug = level;
 	}
-
+	fprintf(stderr, "nl_debug_init nl_debug=%d\r\n", nl_debug);
 	nl_debug_dp.dp_fd = stderr;
 }
 
